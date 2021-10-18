@@ -135,6 +135,8 @@ struct mmc_data {
 #define MMC_DATA_DAT_TAG	BIT(13)		/* Tag request */
 #define MMC_DATA_FORCED_PRG	BIT(14)		/* Forced programming */
 
+#define MMC_DATA_STREAM	(1 << 15)
+
 	unsigned int		bytes_xfered;
 
 	struct mmc_command	*stop;		/* stop command */

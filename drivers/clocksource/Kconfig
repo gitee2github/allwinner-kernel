@@ -106,10 +106,11 @@ config OWL_TIMER
 	  Enables the support for the Actions Semi Owl timer driver.
 
 config SUN4I_TIMER
-	bool "Sun4i timer driver" if COMPILE_TEST
+	bool "Sun4i timer driver"
+	depends on GENERIC_CLOCKEVENTS
 	depends on HAS_IOMEM
+	default y
 	select CLKSRC_MMIO
-	select TIMER_OF
 	help
 	  Enables support for the Sun4i timer.
 

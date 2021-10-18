@@ -1284,12 +1284,13 @@ int mmc_regulator_set_ocr(struct mmc_host *mmc,
 			unsigned short vdd_bit)
 {
 	int			result = 0;
-	int			min_uV, max_uV;
+	/*int			min_uV, max_uV;*/
 
 	if (vdd_bit) {
-		mmc_ocrbitnum_to_vdd(vdd_bit, &min_uV, &max_uV);
+		/*sunxi platform avoid set vcc voltage*/
+		/*mmc_ocrbitnum_to_vdd(vdd_bit, &min_uV, &max_uV);
 
-		result = regulator_set_voltage(supply, min_uV, max_uV);
+		result = regulator_set_voltage(supply, min_uV, max_uV);*/
 		if (result == 0 && !mmc->regulator_enabled) {
 			result = regulator_enable(supply);
 			if (!result)
@@ -2230,7 +2231,8 @@ EXPORT_SYMBOL(mmc_erase);
 int mmc_can_erase(struct mmc_card *card)
 {
 	if ((card->host->caps & MMC_CAP_ERASE) &&
-	    (card->csd.cmdclass & CCC_ERASE) && card->erase_size)
+	    (card->csd.cmdclass & CCC_ERASE) && card->erase_size &&
+	    !(card->quirks & MMC_QUIRK_ERASE_BROKEN))
 		return 1;
 	return 0;
 }

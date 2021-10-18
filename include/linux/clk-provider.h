@@ -28,6 +28,7 @@
 #define CLK_SET_PARENT_GATE	BIT(1) /* must be gated across re-parent */
 #define CLK_SET_RATE_PARENT	BIT(2) /* propagate rate change up one level */
 #define CLK_IGNORE_UNUSED	BIT(3) /* do not gate even if unused */
+#define CLK_IS_ROOT		    BIT(4) /* root clk, has no parent */
 				/* unused */
 #define CLK_IS_BASIC		BIT(5) /* Basic clk, can't do a to_clk_foo() */
 #define CLK_GET_RATE_NOCACHE	BIT(6) /* do not use the cached clk rate */
@@ -40,6 +41,16 @@
 #define CLK_OPS_PARENT_ENABLE	BIT(12)
 /* duty cycle call may be forwarded to the parent clock */
 #define CLK_DUTY_CYCLE_PARENT	BIT(13)
+#define CLK_IGNORE_AUTORESET    BIT(14) /* for sunxi use */
+#define CLK_REVERT_ENABLE       BIT(15) /* for sunxi use */
+#define CLK_IGNORE_SYNCBOOT     BIT(16) /* for sunxi use */
+#define CLK_READONLY            BIT(17) /* for sunxi use */
+#define CLK_IGNORE_DISABLE      BIT(18) /* for sunxi use */
+#define CLK_RATE_FLAT_FACTORS   BIT(19) /* for sunxi use */
+#define CLK_RATE_FLAT_DELAY     BIT(20) /* for sunxi use */
+
+#define CLK_NO_DISABLE          BIT(21) /* for sunxi use */
+#define CLK_IGNORE_ENABLE_DISABLE BIT(22) /* for sunxi use */
 
 struct clk;
 struct clk_hw;
