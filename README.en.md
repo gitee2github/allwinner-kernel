@@ -6,14 +6,16 @@ This repository provides openEuler kernel source for Allwinner SoCs. The code is
 
 This repository is based on [openEuler kernel source](https://gitee.com/openeuler/kernel) and [orangepi kernel source](https://github.com/orangepi-xunlong/linux-orangepi/tree/orange-pi-4.9-sun50iw9).
 
+To build a complete image of Orange Pi Zero2, please refer to [orangepi-build script](https://github.com/orangepi-xunlong/orangepi-build).
+
 #### Software Architecture
 
-Aarch64
+AAarch64
 
 #### About branch
 
-- master: The default branch, only readme is available, because the migrating work is still on going.
-- openEuler-20.03-LTS: Mirror of [kernel source of openEuler-20.03-LTS](https://gitee.com/tideao/allwinner-kernel/tree/openEuler-20.03-LTS/), as the base code.
+- master: Default branch, which stores entry information.
+- openEuler-20.03-LTS: Stores the kernel source code for porting the [openEuler-20.03-LTS kernel](https://gitee.com/tideao/allwinner-kernel/tree/openEuler-20.03-LTS/) to Allwinner boards.
 
 #### Contribution
 
