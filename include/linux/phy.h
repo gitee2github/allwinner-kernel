@@ -683,7 +683,7 @@ const char *phy_duplex_to_str(unsigned int duplex);
 struct phy_setting {
 	u32 speed;
 	u8 duplex;
-	u8 bit;
+	u8 bit;	
 };
 
 const struct phy_setting *
@@ -1041,6 +1041,7 @@ void phy_start_machine(struct phy_device *phydev);
 void phy_stop_machine(struct phy_device *phydev);
 void phy_trigger_machine(struct phy_device *phydev, bool sync);
 int phy_ethtool_sset(struct phy_device *phydev, struct ethtool_cmd *cmd);
+int phy_ethtool_gset(struct phy_device *phydev, struct ethtool_cmd *cmd);
 void phy_ethtool_ksettings_get(struct phy_device *phydev,
 			       struct ethtool_link_ksettings *cmd);
 int phy_ethtool_ksettings_set(struct phy_device *phydev,

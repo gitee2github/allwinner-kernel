@@ -230,6 +230,9 @@ struct gpio_desc *of_find_gpio(struct device *dev, const char *con_id,
 	unsigned int i;
 
 	/* Try GPIO property "foo-gpios" and "foo-gpio" */
+#ifdef CONFIG_ARCH_SUNXI
+	struct gpio_config gpio_flags;
+#endif
 	for (i = 0; i < ARRAY_SIZE(gpio_suffixes); i++) {
 		if (con_id)
 			snprintf(prop_name, sizeof(prop_name), "%s-%s", con_id,
@@ -238,8 +241,14 @@ struct gpio_desc *of_find_gpio(struct device *dev, const char *con_id,
 			snprintf(prop_name, sizeof(prop_name), "%s",
 				 gpio_suffixes[i]);
 
+#ifndef CONFIG_ARCH_SUNXI
 		desc = of_get_named_gpiod_flags(dev->of_node, prop_name, idx,
 						&of_flags);
+#else
+		desc = of_get_named_gpiod_flags(dev->of_node, prop_name, idx,
+						(enum of_gpio_flags *)&gpio_flags);
+		of_flags = gpio_flags.data;
+#endif						
 		/*
 		 * -EPROBE_DEFER in our case means that we found a
 		 * valid GPIO property, but no controller has been
