@@ -2054,10 +2054,8 @@ EXPORT_SYMBOL(axp20x_match_device);
 
 static u32 axp_reg_addr;
 
-//static ssize_t axp_reg_show(struct class *class,
-//				struct class_attribute *attr, char *buf)
-static ssize_t axp_reg_show(struct device *dev,
-				struct device_attribute *attr, char *buf)
+static ssize_t axp_reg_show(struct class *class,
+				struct class_attribute *attr, char *buf)
 {
 	u32 val;
 
@@ -2066,11 +2064,8 @@ static ssize_t axp_reg_show(struct device *dev,
 				axp_reg_addr, val);
 }
 
-//static ssize_t axp_reg_store(struct class *class,
-//				struct class_attribute *attr,
-//				const char *buf, size_t count)
-static ssize_t axp_reg_store(struct device *class,
-				struct device_attribute *attr,
+static ssize_t axp_reg_store(struct class *class,
+				struct class_attribute *attr,
 				const char *buf, size_t count)				
 {
 	s32 tmp;
@@ -2092,15 +2087,10 @@ static ssize_t axp_reg_store(struct device *class,
 	return count;
 }
 
-//static struct class_attribute axp_class_attrs[] = {
-//	__ATTR(axp_reg,       S_IRUGO|S_IWUSR, axp_reg_show,   axp_reg_store),
-//	__ATTR_NULL
-//};
-static DEVICE_ATTR(dbbrstn, S_IRUGO | S_IWUSR,
-			axp_reg_show, axp_reg_store);
+static CLASS_ATTR_RW(axp_reg);			
 
 static struct attribute *axp_class_attrs[] = {
-	&dev_attr_dbbrstn.attr,
+	&class_attr_axp_reg.attr,
 	NULL,
 };
 ATTRIBUTE_GROUPS(axp_class);

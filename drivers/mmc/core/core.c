@@ -2510,9 +2510,7 @@ static int mmc_rescan_try_freq(struct mmc_host *host, unsigned freq)
 	 */
 	if (!(host->caps2 & MMC_CAP2_NO_SDIO))
 		sdio_reset(host);
-
 	mmc_go_idle(host);
-
 	if (!(host->caps2 & MMC_CAP2_NO_SD))
 		mmc_send_if_cond(host, host->ocr_avail);
 
@@ -2620,7 +2618,6 @@ void mmc_rescan(struct work_struct *work)
 		mmc_release_host(host);
 		host->trigger_card_event = false;
 	}
-
 	mmc_bus_get(host);
 
 	/*
@@ -2644,21 +2641,18 @@ void mmc_rescan(struct work_struct *work)
 		mmc_bus_put(host);
 		goto out;
 	}
-
 	/*
 	 * Only we can add a new handler, so it's safe to
 	 * release the lock here.
 	 */
 	mmc_bus_put(host);
-
 	mmc_claim_host(host);
 	if (mmc_card_is_removable(host) && host->ops->get_cd &&
-			host->ops->get_cd(host) == 0) {
+			host->ops->get_cd(host) == 0) {						
 		mmc_power_off(host);
 		mmc_release_host(host);
 		goto out;
 	}
-
 	for (i = 0; i < ARRAY_SIZE(freqs); i++) {
 		if (!mmc_rescan_try_freq(host, max(freqs[i], host->f_min)))
 			break;

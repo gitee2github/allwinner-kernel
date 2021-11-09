@@ -334,14 +334,6 @@ static int gpio_sw_resume(struct device *dev)
 	return 0;
 }
 
-//static struct device_attribute gpio_sw_class_attrs[] = {
-//	__ATTR(cfg, 0664, cfg_sel_show, cfg_sel_store),
-//	__ATTR(pull, 0664, pull_show, pull_store),
-//	__ATTR(drv, 0664, drv_level_show, drv_level_store),
-//	__ATTR(data, 0664, data_show, data_store),
-//	__ATTR_NULL,
-//};
-
 static DEVICE_ATTR(cfg, 0664, cfg_sel_show, cfg_sel_store);
 static DEVICE_ATTR(pull, 0664, pull_show, pull_store);
 static DEVICE_ATTR(drv, 0664, drv_level_show, drv_level_store);
