@@ -12,7 +12,7 @@
  * published by the Free Software Foundation; either version 2 of
  * the License, or (at your option) any later version.
  */
- //#define  DEBUG 1
+ 
 #include <linux/kernel.h>
 #include <linux/module.h>
 #include <linux/io.h>
@@ -1181,7 +1181,7 @@ static void sunxi_mmc_set_ios(struct mmc_host *mmc, struct mmc_ios *ios)
 		}
 
 		host->power_on = 0;
-		dev_dbg(mmc_dev(mmc), "power off!\n");		
+		dev_dbg(mmc_dev(mmc), "power off!\n");
 		break;
 	}
 
@@ -1500,11 +1500,6 @@ static void sunxi_mmc_request(struct mmc_host *mmc, struct mmc_request *mrq)
 		cmd_val & 0x3f, cmd_val, cmd->arg, imask,
 		mrq->data ? mrq->data->blksz * mrq->data->blocks : 0);
 
-//printk("-----------------cmd :%d----------\n", cmd_val & 0x3f);
-
-//	if((cmd_val & 0x3f) == 25)
-//		dump_stack();
-
 	spin_lock_irqsave(&host->lock, iflags);
 
 	if (host->mrq || host->manual_stop_mrq
@@ -1709,10 +1704,12 @@ static int sunxi_mmc_gpio_get_cd(struct mmc_host *mmc)
 	int i = 0;
 	int gpio_val = 0;
 	struct sunxi_mmc_host *host = mmc_priv(mmc);
+
 	if (!(mmc->caps & MMC_CAP_NEEDS_POLL)
 		|| ((mmc->caps & MMC_CAP_NEEDS_POLL)
 			&& !(host->ctl_spec_cap & SUNXI_DIS_KER_NAT_CD)))
 		return mmc_gpio_get_cd(mmc);
+
 	for (i = 0; i < 5; i++) {
 		gpio_val += mmc_gpio_get_cd(mmc);
 		usleep_range(1000, 1500);
@@ -1732,6 +1729,7 @@ static int sunxi_mmc_gpio_get_cd(struct mmc_host *mmc)
 			__func__, __LINE__, host->present);
 		return 1;
 	}
+
 	return 0;
 }
 
@@ -2411,12 +2409,14 @@ static int sunxi_mmc_extra_of_parse(struct mmc_host *mmc)
 
 	return 0;
 }
+
 static int sunxi_mmc_probe(struct platform_device *pdev)
 {
 	struct sunxi_mmc_host *host;
 	struct mmc_host *mmc;
 	struct mmc_gpio *ctx;
 	int ret;
+
 	dev_info(&pdev->dev, "%s\n", DRIVER_VERSION);
 
 	mmc = mmc_alloc_host(sizeof(struct sunxi_mmc_host), &pdev->dev);
@@ -2502,7 +2502,7 @@ static int sunxi_mmc_probe(struct platform_device *pdev)
 	}
 
 	sunxi_mmc_panic_init_ps(NULL);
-//mmc_delay(500);	
+
 	return 0;
 
 error_free_dma:
@@ -2510,9 +2510,6 @@ error_free_dma:
 			  host->sg_dma);
 error_free_host:
 	mmc_free_host(mmc);
-	
-	//msleep(10000);
-
 	return ret;
 }
 

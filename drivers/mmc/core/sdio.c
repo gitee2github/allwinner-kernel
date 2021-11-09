@@ -1103,7 +1103,6 @@ int mmc_attach_sdio(struct mmc_host *host)
 	struct mmc_card *card;
 
 	WARN_ON(!host->claimed);
-
 	err = mmc_send_io_op_cond(host, 0, &ocr);
 	if (err)
 		return err;

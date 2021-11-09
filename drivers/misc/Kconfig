@@ -512,6 +512,14 @@ config PCI_ENDPOINT_TEST
 config MISC_RTSX
 	tristate
 	default MISC_RTSX_PCI || MISC_RTSX_USB
+config SUNXI_SST_STORAGE
+	tristate "secure storage"
+	default n
+	help
+	  Say Y here if you have a vibrator on your board.
+
+	  To compile this driver as a module, choose M here: the
+	  module will be called sunxi_storage.
 
 source "drivers/misc/c2port/Kconfig"
 source "drivers/misc/eeprom/Kconfig"
@@ -528,4 +536,7 @@ source "drivers/misc/cxl/Kconfig"
 source "drivers/misc/ocxl/Kconfig"
 source "drivers/misc/cardreader/Kconfig"
 source "drivers/misc/uacce/Kconfig"
+source "drivers/misc/sunxi-rf/Kconfig"
+source "drivers/misc/sunxi-addr-mgt/Kconfig"
+source "drivers/misc/sunxi-bootevent/Kconfig"
 endmenu

@@ -59,3 +59,6 @@ obj-$(CONFIG_PCI_ENDPOINT_TEST)	+= pci_endpoint_test.o
 obj-$(CONFIG_OCXL)		+= ocxl/
 obj-$(CONFIG_MISC_RTSX)		+= cardreader/
 obj-$(CONFIG_UACCE)             += uacce/
+obj-$(CONFIG_SUNXI_RFKILL)      += sunxi-rf/
+obj-$(CONFIG_SUNXI_ADDR_MGT)    += sunxi-addr-mgt/
+obj-$(CONFIG_SUNXI_BOOTEVENT)   += sunxi-bootevent/
