@@ -1,36 +1,25 @@
-# allwinner-kernel
+English | [简体中文](./README.md) 
 
 #### Description
-It provides openEuler kernel source for Allwinner SoCs
+
+This repository provides openEuler kernel source for Allwinner SoCs. The code is still in progress, and any contributation is welcome.
+
+This repository is based on [openEuler kernel source](https://gitee.com/openeuler/kernel) and [orangepi kernel source](https://github.com/orangepi-xunlong/linux-orangepi/tree/orange-pi-4.9-sun50iw9).
+
+To build a complete image of Orange Pi Zero2, please refer to [orangepi-build script](https://github.com/orangepi-xunlong/orangepi-build).
 
 #### Software Architecture
-Software architecture description
 
-#### Installation
+AAarch64
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+#### About branch
 
-#### Instructions
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
+- master: Default branch, which stores entry information.
+- openEuler-20.03-LTS: Stores the kernel source code for porting the [openEuler-20.03-LTS kernel](https://gitee.com/tideao/allwinner-kernel/tree/openEuler-20.03-LTS/) to Allwinner boards.
 
 #### Contribution
 
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
+Welcome PR, refer to [How to contribute](https://gitee.com/openeuler/community/blob/master/CONTRIBUTING.md).
 
-
-#### Gitee Feature
-
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+If your contributions are for openEuler kernel that are not related to Rockchip Socs, please sumbit patches directly to https://gitee.com/openeuler/kernel.
+ 
