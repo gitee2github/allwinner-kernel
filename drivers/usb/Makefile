@@ -14,7 +14,7 @@ obj-$(CONFIG_USB_ISP1760)	+= isp1760/
 
 obj-$(CONFIG_USB_MON)		+= mon/
 obj-$(CONFIG_USB_MTU3)		+= mtu3/
-
+obj-$(CONFIG_USB_SUNXI_HCI)	+= host/
 obj-$(CONFIG_USB_PCI)		+= host/
 obj-$(CONFIG_USB_EHCI_HCD)	+= host/
 obj-$(CONFIG_USB_ISP116X_HCD)	+= host/
@@ -67,3 +67,4 @@ obj-$(CONFIG_USBIP_CORE)	+= usbip/
 obj-$(CONFIG_TYPEC)		+= typec/
 
 obj-$(CONFIG_USB_ROLE_SWITCH)	+= roles/
+obj-$(CONFIG_USB_SUNXI_USB)     += sunxi_usb/

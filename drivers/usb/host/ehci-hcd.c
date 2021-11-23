@@ -1291,6 +1291,11 @@ MODULE_LICENSE ("GPL");
 #define        PLATFORM_DRIVER         ehci_mv_driver
 #endif
 
+#if IS_ENABLED(CONFIG_USB_SUNXI_HCI)
+#include "ehci_sunxi.c"
+#define PLATFORM_DRIVER         sunxi_ehci_hcd_driver
+#endif
+
 static int __init ehci_hcd_init(void)
 {
 	int retval = 0;
