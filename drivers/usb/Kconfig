@@ -171,6 +171,8 @@ source "drivers/usb/gadget/Kconfig"
 
 source "drivers/usb/typec/Kconfig"
 
+source "drivers/usb/sunxi_usb/Kconfig"
+
 source "drivers/usb/roles/Kconfig"
 
 config USB_LED_TRIG
